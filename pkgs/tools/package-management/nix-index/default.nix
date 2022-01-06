@@ -4,16 +4,16 @@
 
 rustPlatform.buildRustPackage rec {
   pname = "nix-index";
-  version = "0.1.2";
+  version = "unstable-2021-11-13";
 
   src = fetchFromGitHub {
     owner = "bennofs";
     repo = "nix-index";
-    rev = "v${version}";
-    sha256 = "05fqfwz34n4ijw7ydw2n6bh4bv64rhks85cn720sy5r7bmhfmfa8";
+    rev = "2b0773a7bd1252714285c0bcf591747db47e157e";
+    sha256 = "sha256-eP/o0GdZYSAE6MEi07uMkvuTb0Rxq4LZRGMERipE8oE=";
   };
 
-  cargoSha256 = "161lz96a52s53rhhkxxhcg41bsmh8w6rv6nl8gwqmg3biszy7hah";
+  cargoSha256 = "sha256-CPxpL5qWCC34cA5th45NATzBtrDbpf4R2rGVhaqQEGo=";
 
   nativeBuildInputs = [ pkg-config ];
   buildInputs = [ openssl curl ]
