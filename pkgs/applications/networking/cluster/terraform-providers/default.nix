@@ -1,6 +1,5 @@
 { lib
 , buildGoModule
-, buildGoPackage
 , fetchFromGitHub
 , callPackage
 , config
@@ -11,13 +10,16 @@ let
   buildWithGoModule = data:
     buildGoModule {
       pname = data.repo;
-      version = data.version;
+      inherit (data) vendorSha256 version;
       subPackages = [ "." ];
       doCheck = false;
+      # https://github.com/hashicorp/terraform-provider-scaffolding/blob/a8ac8375a7082befe55b71c8cbb048493dd220c2/.goreleaser.yml
+      # goreleaser (used for builds distributed via terraform registry) requires that CGO is disabled
+      CGO_ENABLED = 0;
+      ldflags = [ "-s" "-w" "-X main.version=${data.version}" "-X main.commit=${data.rev}" ];
       src = fetchFromGitHub {
         inherit (data) owner repo rev sha256;
       };
-      vendorSha256 = data.vendorSha256 or null;
       deleteVendor = data.deleteVendor or false;
       proxyVendor = data.proxyVendor or false;
 
@@ -27,32 +29,16 @@ let
       passthru = data;
     };
 
-  buildWithGoPackage = data:
-    buildGoPackage {
-      pname = data.repo;
-      version = data.version;
-      goPackagePath = "github.com/${data.owner}/${data.repo}";
-      subPackages = [ "." ];
-      doCheck = false;
-      src = fetchFromGitHub {
-        inherit (data) owner repo rev sha256;
-      };
-      # Terraform allow checking the provider versions, but this breaks
-      # if the versions are not provided via file paths.
-      postBuild = "mv $NIX_BUILD_TOP/go/bin/${data.repo}{,_v${data.version}}";
-      passthru = data;
-    };
-
   # Our generic constructor to build new providers
   mkProvider = attrs:
-    (if (lib.hasAttr "vendorSha256" attrs) then buildWithGoModule else buildWithGoPackage)
+    (if (lib.hasAttr "vendorSha256" attrs) then buildWithGoModule else throw /* added 2022/01 */ "vendorSha256 missing: please use `buildGoModule`")
       attrs;
 
   # These providers are managed with the ./update-all script
   automated-providers = lib.mapAttrs (_: attrs: mkProvider attrs) list;
 
   # These are the providers that don't fall in line with the default model
-  special-providers = let archived = throw "the provider has been archived by upsteam"; in {
+  special-providers = let archived = throw "the provider has been archived by upstream"; in {
     # Packages that don't fit the default model
     gandi = callPackage ./gandi { };
     libvirt = callPackage ./libvirt { };
@@ -64,6 +50,7 @@ let
     chef = archived; # added 2022/01
     cherryservers = archived; # added 2022/01
     clc = archived; # added 2022/01
+    cloudstack = throw "removed from nixpkgs"; # added 2022/01
     cobbler = archived; # added 2022/01
     cohesity = archived; # added 2022/01
     dyn = archived; # added 2022/01
@@ -86,10 +73,12 @@ let
     rancher = archived; # added 2022/01
     rightscale = archived; # added 2022/01
     runscope = archived; # added 2022/01
+    segment = throw "removed from nixpkgs"; # added 2022/01
     softlayer = archived; # added 2022/01
     telefonicaopencloud = archived; # added 2022/01
     terraform = archived; # added 2022/01
     ultradns = archived; # added 2022/01
+    vthunder = throw "provider was renamed to thunder"; # added 2022/01
   });
 in
 automated-providers // special-providers // { inherit mkProvider; }
