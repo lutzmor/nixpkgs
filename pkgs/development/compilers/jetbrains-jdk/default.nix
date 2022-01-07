@@ -1,4 +1,4 @@
-{ lib, openjdk11, fetchFromGitHub, jetbrains }:
+{ lib, openjdk11, fetchFromGitHub, jetbrains, pkgs }:
 
 openjdk11.overrideAttrs (oldAttrs: rec {
   pname = "jetbrains-jdk";
@@ -12,7 +12,7 @@ openjdk11.overrideAttrs (oldAttrs: rec {
   patches = [];
   
   shellHook = ''
-    PATH="{$autoconf}/bin:$PATH"
+    PATH="{$pgks.autoconf}/bin:$PATH"
   '';
   
   meta = with lib; {
