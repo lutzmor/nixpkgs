@@ -12,7 +12,7 @@ openjdk11.overrideAttrs (oldAttrs: rec {
   patches = [];
   
   shellHook = ''
-    PATH="${pkgs.autoconf}/bin:$PATH"
+    PATH="{$autoconf}/bin:$PATH"
   '';
   
   meta = with lib; {
