@@ -24,7 +24,7 @@ let
     '';
 
     installPhase = ''
-      cd Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk
+      cd Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk
 
       mkdir $out
       cp -r System usr $out/
