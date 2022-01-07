@@ -4,12 +4,12 @@
 let
   MacOSX-SDK = stdenvNoCC.mkDerivation rec {
     pname = "MacOSX-SDK";
-    version = "11.0.0";
+    version = "12.0.0";
 
     # https://swscan.apple.com/content/catalogs/others/index-11-10.15-10.14-10.13-10.12-10.11-10.10-10.9-mountainlion-lion-snowleopard-leopard.merged-1.sucatalog
     src = fetchurl {
       url = "https://swcdn.apple.com/content/downloads/50/51/071-29699-A_YC8SX0OHH3/7479xojqghsvgtnt3dxjpnxuz9sjpmbmds/CLTools_macOSNMOS_SDK.pkg";
-      sha256 = "0n425smj4q1vxbza8fzwnk323fyzbbq866q32w288c44hl5yhwsf";
+      sha256 = "6faff385985c1dad1bfc4eb24bc83b779ff5ac8ebbd5055c9c6381386048df2d";
     };
 
     dontBuild = true;
