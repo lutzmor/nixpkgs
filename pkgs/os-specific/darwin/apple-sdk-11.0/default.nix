@@ -8,8 +8,8 @@ let
 
     # https://swscan.apple.com/content/catalogs/others/index-11-10.15-10.14-10.13-10.12-10.11-10.10-10.9-mountainlion-lion-snowleopard-leopard.merged-1.sucatalog
     src = fetchurl {
-      url = "https://swcdn.apple.com/content/downloads/02/62/071-54303-A_EU2CL1YVT7/943i95dpeyi2ghlnj2mgyq3t202t5gf18b/CLTools_macOSNMOS_SDK.pkg";
-      sha256 = "ec0e70de35ac8c09868eee0a88b52c1c6992fb3ed825de5e3054c80ea5bb3481";
+      url = "https://swcdn.apple.com/content/downloads/43/52/071-71319-A_2PNZ1H03T9/yorgkv27w1zgfvebolkypz7kd69zi7ykhm/CLTools_macOSNMOS_SDK.pkg";
+      sha256 = "020c071266661efe76f09b768c16d9a97a914baa68daabd84a05dbe2789406b6";
     };
 
     dontBuild = true;
