@@ -10,6 +10,11 @@ openjdk11.overrideAttrs (oldAttrs: rec {
     sha256 = "1xpgsgmmj5jp5qyw98hqmik6a7z3hfwmij023ij3qqymyj3nhm2i";
   };
   patches = [];
+  
+  shellHook = ''
+    PATH="${pkgs.autoconf}/bin:$PATH"
+  '';
+  
   meta = with lib; {
     description = "An OpenJDK fork to better support Jetbrains's products.";
     longDescription = ''
