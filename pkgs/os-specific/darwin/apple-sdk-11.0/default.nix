@@ -4,12 +4,12 @@
 let
   MacOSX-SDK = stdenvNoCC.mkDerivation rec {
     pname = "MacOSX-SDK";
-    version = "12.0.0";
+    version = "11.0.0";
 
     # https://swscan.apple.com/content/catalogs/others/index-11-10.15-10.14-10.13-10.12-10.11-10.10-10.9-mountainlion-lion-snowleopard-leopard.merged-1.sucatalog
     src = fetchurl {
-      url = "https://swcdn.apple.com/content/downloads/43/52/071-71319-A_2PNZ1H03T9/yorgkv27w1zgfvebolkypz7kd69zi7ykhm/CLTools_macOSNMOS_SDK.pkg";
-      sha256 = "020c071266661efe76f09b768c16d9a97a914baa68daabd84a05dbe2789406b6";
+      url = "http://swcdn.apple.com/content/downloads/46/21/001-89745-A_56FM390IW5/v1um2qppgfdnam2e9cdqcqu2r6k8aa3lis/CLTools_macOSNMOS_SDK.pkg";
+      sha256 = "0n425smj4q1vxbza8fzwnk323fyzbbq866q32w288c44hl5yhwsf";
     };
 
     dontBuild = true;
@@ -24,7 +24,7 @@ let
     '';
 
     installPhase = ''
-      cd Library/Developer/CommandLineTools/SDKs/MacOSX12.0.sdk
+      cd Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk
 
       mkdir $out
       cp -r System usr $out/
