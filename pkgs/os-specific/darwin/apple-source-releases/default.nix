@@ -70,7 +70,7 @@ let
       file_cmds     = "264.1.1";
       shell_cmds    = "187";
       system_cmds   = "550.6";
-      diskdev_cmds   = "593";
+      diskdev_cmds   = "667.100.2";
       top           = "108";
       text_cmds     = "99";
     };
