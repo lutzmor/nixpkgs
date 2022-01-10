@@ -42,5 +42,5 @@ shell_cmds = applePackage' "shell_cmds" "216.40.4" "macos-11.0.1" "1mvp1fp34kkm4
 system_cmds = applePackage' "system_cmds" "880.40.5" "macos-11.0.1" "1kys4vwfz4559sspdsfhmxc238nd8qgylqypza3zdzaqhfh7lx2x" {};
 text_cmds = applePackage' "text_cmds" "106" "macos-11.0.1" "0cpnfpllwpx20hbxzg5i5488gcjyi9adnbac1sd5hpv3bq6z1hs5" {};
 top = applePackage' "top" "129" "macos-11.0.1" "1nyz5mvq7js3zhsi3dwxl5fslg6m7nhlgc6p2hr889xgyl5prw8f" {};
-xnu = applePackage' "xnu" "7195.50.7.100.1" "macos-11.0.1" "14wqkqp3lcxgpm1sjnsysybrc4ppzkghwv3mb5nr5v8ml37prkib" {};
+xnu = applePackage' "xnu" "7195.121.3" "macos-11.0.1" "14wqkqp3lcxgpm1sjnsysybrc4ppzkghwv3mb5nr5v8ml37prkib" {};
 }
