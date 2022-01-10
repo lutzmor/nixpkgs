@@ -7,7 +7,7 @@ let
   # now it's staying here.
   versions = {
     "osx-10.12.6" = {
-      xnu           = "3789.70.16";
+      xnu           = "7195.121.3";
       libiconv      = "50";
       Libnotify     = "165.20.1";
       objc4         = "709.1";
@@ -32,7 +32,7 @@ let
     "osx-10.11.6" = {
       PowerManagement = "572.50.1";
       dtrace        = "168";
-      xnu           = "3248.60.10";
+      xnu           = "7195.121.3";
       libpthread    = "138.10.4";
       libiconv      = "44";
       Libnotify     = "150.40.1";
